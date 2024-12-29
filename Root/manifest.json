@@ -24,6 +24,13 @@
 		"32":  "icons/yt-Focus-32.png",
 		"16":  "icons/yt-Focus-16.png"
 		
-	}
+	},
+	
+	"content_scripts": [{
+		
+		"matches": [ "*://*.youtube.com/*" ],
+		"js": [ "scripts/yt-Focus.js" ]
+		
+	}]
 	
 }
