@@ -1,0 +1,101 @@
+:root, html, body {
+	font-family: "Segoe UI", Century Gothic, sans-serif;
+	font-size: 1.00rem;
+}
+
+@media screen and (min-width: 1440px) {
+	:root, html, body {
+		font-size: 1.80rem;
+	}
+}
+
+@media screen and (max-width: 380px) {
+	:root, html, body {
+		font-size: 0.80rem;
+	}
+}
+
+/*
+	---- ---- ---- ----
+*/
+
+body {
+	margin: 0;
+	display: block;
+	width: 100%;
+	height: auto;
+	background-color: white;
+}
+
+body > *:not(script) {
+	margin: 0 0 0.58rem 0;
+}
+
+body > *:not(script):last-child {
+	margin-bottom: 0;
+}
+
+/*
+	---- ---- ---- ----
+*/
+
+body > header {
+	display: flex;
+	padding: 0.38rem;
+	border: darkred 0.18rem solid;
+	/* Flex Styles */
+	justify-content: space-between;
+	align-items: center;
+	/* Flex Styles */
+	width: calc(100% - 0.38rem * 2 - 0.18rem * 2);
+	height: auto;
+	background-color: red;
+	box-shadow: 0 0.28rem 0.38rem 0.20rem lightgrey;
+	border-radius: 1.00rem;
+}
+
+@media screen and (max-width: 380px) {
+	body > header {
+		flex-direction: column;
+	}
+}
+
+body > header > *:not(script) {
+	margin: 0.28rem;
+	display: inline-block;
+}
+
+body > header > h1 {
+	font-size: 2.58rem;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	text-shadow: 0 0 0.58rem grey;
+}
+
+body > header > img {
+	height: calc(2.58rem * 2.78);
+}
+
+/*
+	---- ---- ---- ----
+*/
+
+body > .options {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 0.38rem;
+	width: calc(58% - 0.38rem * 2);
+	height: auto;
+	background-color: transparent;
+}
+
+body > .options > *:not(script) {
+	margin: 0 0 0.38rem 0;
+	border-radius: 1.00rem;
+}
+
+body > .options > *:not(script):last-child {
+	margin-bottom: 0;
+}
