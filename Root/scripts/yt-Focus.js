@@ -125,29 +125,35 @@ const InjectEmbedEndpoint = (
 				".slim-video-action-bar-actions"
 			);
 			
-			if (container != null){
+			if (container != null) {
+				
+				let x = document.createElement("div")
+				x.setAttribute("id", "d1ed5d8a-10d9-49a7-a5de-2251c044ff2a");
+				x.setAttribute("class",
+					"yt-spec-button-view-model slim_video_action_bar_renderer_button");
 				
 				let embedEndpoint = document.createElement("a");
 				embedEndpoint.style.textDecoration = "none";
-				embedEndpoint.setAttribute("id", "d1ed5d8a-10d9-49a7-a5de-2251c044ff2a");
 				embedEndpoint.setAttribute("button-renderer", "true");
 				embedEndpoint.setAttribute("class",
-					"slim_video_action_bar_renderer_button yt-spec-button-shape-next " +
+					"yt-spec-button-shape-next " +
 					"yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono " +
 					"yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
 				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
-				embedEndpoint.setAttribute("href", 
+				embedEndpoint.setAttribute("href",
 					(!query.has("v")) ? "https://www.youtube.com/embed/XXXXXXXXXXX" :
 						("https://www.youtube.com/embed/" + query.get("v"))
 				);
 				
-				container.appendChild(embedEndpoint);
+				x.appendChild(embedEndpoint);
+				container.appendChild(x);
 				
 			}
 			
 		}
+		
 	}
 	
 	if (ytTab.hostType == "desktop" && ytTab.endpoint.endsWith("/watch")) {
@@ -158,19 +164,19 @@ const InjectEmbedEndpoint = (
 					"ytd-watch-metadata #actions ytd-menu-renderer #top-level-buttons-computed"
 			);
 			
-			if (container != null){
+			if (container != null) {
 				
 				let embedEndpoint = document.createElement("a");
 				embedEndpoint.style.textDecoration = "none";
 				embedEndpoint.setAttribute("id", "d1ed5d8a-10d9-49a7-a5de-2251c044ff2a");
 				embedEndpoint.setAttribute("button-renderer", "true");
 				embedEndpoint.setAttribute("class",
-					"ytd-menu-renderer yt-spec-button-shape-next yt-spec-button-shape-next--tonal " +
+					"ytd-menu-renderer yt-spec-button-view-model yt-spec-button-shape-next yt-spec-button-shape-next--tonal " +
 					"yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
 				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
-				embedEndpoint.setAttribute("href", 
+				embedEndpoint.setAttribute("href",
 					(!query.has("v")) ? "https://www.youtube.com/embed/XXXXXXXXXXX" :
 						("https://www.youtube.com/embed/" + query.get("v"))
 				);
