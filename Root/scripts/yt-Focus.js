@@ -111,6 +111,210 @@ const ytTab = Object.preventExtensions(
 	---- ---- ---- ----
 */
 
+const ShortsRemover = (
+	/* Undefined */
+) => {
+	
+	let targetNode = document.body;
+	
+	/* Shorts endpoints */
+	
+	if (ytTab.hostType == "mobile") {
+		for (let yt_endpoint of targetNode.querySelectorAll(".pivot-bar-item-tab.pivot-shorts")) {
+			yt_endpoint.parentNode.remove();
+		}
+	}
+	
+	if (ytTab.hostType == "desktop") {
+		for (let yt_endpoint of targetNode.querySelectorAll("#endpoint[title=\"Shorts\"]")) {
+			yt_endpoint.parentNode.remove();
+		}
+	}
+	
+	/* Shorts suggestions */
+	
+	if (ytTab.endpoint.endsWith("/")) {
+		
+		if (ytTab.hostType == "mobile") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytm-rich-section-renderer")) {
+				if (yt_section.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytm-rich-item-renderer")) {
+				if (yt_item.querySelector(".media-item-thumbnail-container[href*=\"/shorts\"]") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+		if (ytTab.hostType == "desktop") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytd-rich-section-renderer")) {
+				if (yt_section.querySelector("ytd-rich-item-renderer ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytd-rich-item-renderer")) {
+				if (yt_item.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+	}
+	
+	if (ytTab.endpoint.endsWith("/results")) {
+		
+		if (ytTab.hostType == "mobile") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytm-reel-shelf-renderer")) {
+				if (yt_section.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytm-compact-radio-renderer, ytm-video-with-context-renderer")) {
+				if (yt_item.querySelector(".media-item-thumbnail-container[href*=\"/shorts\"]") != null || yt_item.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+		if (ytTab.hostType == "desktop") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytd-reel-shelf-renderer")) {
+				if (yt_section.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytd-video-renderer")) {
+				if (yt_item.querySelector("#thumbnail[href*=\"/shorts\"]") != null || yt_item.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+	}
+	
+	if (ytTab.endpoint.endsWith("/watch")) {
+		
+		if (ytTab.hostType == "mobile") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytm-reel-shelf-renderer")) {
+				if (yt_section.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytm-compact-radio-renderer, ytm-video-with-context-renderer")) {
+				if (yt_item.querySelector(".media-item-thumbnail-container[href*=\"/shorts\"]") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+		if (ytTab.hostType == "desktop") {
+			
+			/* yt-shorts sections */
+			for (let yt_section of targetNode.querySelectorAll("ytd-reel-shelf-renderer")) {
+				if (yt_section.querySelector("ytm-shorts-lockup-view-model") != null)
+					yt_section.remove();
+			}
+			
+			/* loose shorts */
+			for (let yt_item of targetNode.querySelectorAll("ytd-compact-video-renderer")) {
+				if (yt_item.querySelector("#thumbnail[href*=\"/shorts\"]") != null)
+					yt_item.remove();
+			}
+			
+		}
+		
+	}
+	
+	if (/\/shorts\/.*?$/.test(ytTab.endpoint)) {
+		
+		if (ytTab.hostType == "mobile") {
+			
+			if (targetNode.querySelector("#player-container-id") != null)
+				targetNode.querySelector("#player-container-id")
+					.remove();
+			
+			if (targetNode.querySelector("#bd323b9e-6a5f-47b2-a02c-864111679b2f") == null) {
+				
+				if (targetNode.querySelector("#app") != null) {
+					
+					let yt_app = targetNode.querySelector("#app");
+					yt_app.style.backgroundColor = "black";
+					
+					let container = document.createElement("div");
+					container.setAttribute("id", "bd323b9e-6a5f-47b2-a02c-864111679b2f");
+					container.style.position = "fixed";
+					container.style.display = "flex";
+					container.style.left = "0%";
+					container.style.top = "0%";
+					container.style.width = "100%";
+					container.style.height = "100%";
+					container.style.justifyContent = "center";
+					container.style.alignItems = "center";
+					container.style.zIndex = "-1";
+					
+					let svgAsset = CreateSvgAsset(SvgAssetId.NotFound, "lightgray");
+					svgAsset.style.height = "28%";
+					
+					container.appendChild(svgAsset);
+					yt_app.parentNode.insertBefore(container, yt_app.nextSibling);
+					
+				}
+				
+			}
+			
+		}
+		
+		if (ytTab.hostType == "desktop") {
+			
+			if (targetNode.querySelector("#bd323b9e-6a5f-47b2-a02c-864111679b2f") == null) {
+				
+				if (targetNode.querySelector("ytd-shorts") != null) {
+					
+					let yt_shorts = targetNode.querySelector("ytd-shorts");
+					yt_shorts.setAttribute("id", "bd323b9e-6a5f-47b2-a02c-864111679b2f");
+					yt_shorts.innerHTML = "";
+					
+					let container = document.createElement("div"); /* Using yt Style Sheet */
+					container.setAttribute("id", "shorts-container");
+					container.setAttribute("class", "style-scope ytd-shorts");
+					container.style.alignItems = "center";
+					
+					let svgAsset = CreateSvgAsset(SvgAssetId.NotFound, "lightgray");
+					svgAsset.style.height = "28%";
+					container.appendChild(svgAsset);
+					
+					yt_shorts.appendChild(container);
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}
+
+/*
+	---- ---- ---- ----
+*/
+
 const InjectEmbedEndpoint = (
 	/* Undefined */
 ) => {
@@ -203,7 +407,17 @@ if (ytTab.hostType != null) {
 		
 		if (options.shortsRemover) {
 			
+			ShortsRemover(); /* Initial Call */
 			
+			let _ey51e934e2 = new MutationObserver((
+				/* MutationRecord[] */ mutations, /* MutationObserver */ observer
+			) => {
+				ShortsRemover();
+			});
+			
+			_ey51e934e2.observe(document.body, {
+				childList: true, subtree: true
+			});
 			
 		}
 		
