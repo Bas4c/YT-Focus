@@ -45,7 +45,7 @@ const CreateSvgAsset = (
 	
 	return null;
 	
-} /* -> [SVGElement, null] */
+} /* -> SVGElement, null */
 
 /*
 	---- ---- ---- ----
@@ -57,12 +57,12 @@ const ytTab = Object.preventExtensions(
 		hostType: {
 			
 			enumerable: true,
-			get() /* -> ["mobile", "desktop", null] */ {
+			get() /* -> "mobile", "desktop", null */ {
 				
 				return (
-					(/^(?:www\.)?m\.youtube(?:\.[A-Za-z]+)+$/.test(window.location.host)) ?
+					(/^(?:www\.)?m\.youtube(?:\-nocookie)?(?:\.[A-Za-z]+)+$/.test(window.location.host)) ?
 					"mobile" :
-					/^(?:www\.)?youtube(?:\.[A-Za-z]+)+$/.test(window.location.host) ?
+					/^(?:www\.)?youtube(?:\-nocookie)?(?:\.[A-Za-z]+)+$/.test(window.location.host) ?
 					"desktop" : null
 				);
 				
@@ -346,9 +346,10 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--icon-leading");
 				
 				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
+				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
-					(!query.has("v")) ? "https://www.youtube.com/embed/XXXXXXXXXXX" :
-						("https://www.youtube.com/embed/" + query.get("v"))
+					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
+						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
 				);
 				
 				x.appendChild(embedEndpoint);
@@ -380,9 +381,10 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--icon-leading");
 				
 				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
+				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
-					(!query.has("v")) ? "https://www.youtube.com/embed/XXXXXXXXXXX" :
-						("https://www.youtube.com/embed/" + query.get("v"))
+					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
+						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
 				);
 				
 				container.appendChild(embedEndpoint);

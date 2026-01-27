@@ -6,9 +6,8 @@ const BoolC = (
 	
 	return (
 		typeof object == "string" &&
-		/^(?:-?0+(?:\.0+)?|-?0x0+n?|NaN|-?0+n|[Ff][Aa][Ll][Ss][Ee]|[Nn][Oo]|[Uu][Nn][Dd][Ee][Ff][Ii][Nn][Ee][Dd]|[Nn][Uu][Ll]{2})$/.test(object)
-	) ? false : (object) ?
-		 true : false;
+		/^(?:-?0+(?:\.0+)?|-?0x0+n?|nan|-?0+n|false|no|undefined|null)$/.test(object.toLowerCase())
+	) ? false : (object) ? true : false;
 	
 }
 

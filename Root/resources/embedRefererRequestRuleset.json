@@ -1,0 +1,23 @@
+[
+	
+	{
+		
+		"id": 1,
+		"action": { 
+			"type": "modifyHeaders",
+			"requestHeaders": [{
+				"header": "referer", "operation": "set",
+				"value": "https://google.com/"
+			}]
+		},
+		
+		"condition": {
+			"urlFilter": "*://*.youtube*.com/embed/*",
+			"resourceTypes": [
+				"main_frame", "sub_frame"
+			]
+		}
+		
+	}
+	
+]

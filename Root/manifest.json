@@ -3,7 +3,7 @@
 	"manifest_version": 3,
 	"name": "YouTube Focused Experience",
 	"short_name": "YT-Focus",
-	"version": "1.0",
+	"version": "1.0.25",
 	"description": "Try's to make YouTube experience more Focused",
 	"author": {
 		"email": "martinsand4589@gmail.com"
@@ -13,7 +13,10 @@
 		"service_worker": "scripts/serviceWorker.js"
 	},
 	
-	"permissions": [ "storage" ],
+	"permissions": [
+		"storage",
+		"declarativeNetRequestWithHostAccess"
+	],
 	
 	"icons": {
 		
@@ -29,9 +32,28 @@
 	"options_page": "options/index.html",
 	"content_scripts": [{
 		
-		"matches": [ "*://*.youtube.com/*" ],
+		"matches": [
+			"*://*.youtube.com/*",
+			"*://*.youtube-nocookie.com/*"
+		],
+		
 		"js": [ "scripts/yt-Focus.js" ]
 		
-	}]
+	}],
+	
+	"declarative_net_request": {
+		
+		"rule_resources": [{
+			"id": "embedRefererRequestRuleset",
+			"enabled": true,
+			"path": "resources/embedRefererRequestRuleset.json"
+		}]
+		
+	},
+	
+	"host_permissions": [
+		"*://*.youtube.com/*",
+		"*://*.youtube-nocookie.com/*"
+	]
 	
 }
