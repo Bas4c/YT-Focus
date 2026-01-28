@@ -1,6 +1,7 @@
 "use strict";
 
 const SvgAssetId = Object.freeze({
+	Monitor: "Svg#S#Monitor",
 	NotFound: "Svg#S#NotFound"
 });
 
@@ -36,6 +37,32 @@ const CreateSvgAsset = (
 		svgAssetShape.setAttribute("fill", cssColor);
 		svgAssetShape.setAttribute("d",
 			"M3.5 6.5q.5.5 1 0L5 6l.5.5q.5.5 1 0t0-1L6 5l.5-.5q.5-.5 0-1t-1 0L5 4l-.5-.5q-.5-.5-1 0t0 1L4 5l-.5.5q-.5.5 0 1ZM5 1A1 1 0 005 9 1 1 0 005 1M5 0A1 1 0 015 10 1 1 0 015 0Z");
+		
+		svgAsset.appendChild(svgAssetShape);
+		
+		return svgAsset;
+		
+	}
+	
+	if (id == SvgAssetId.Monitor) {
+		
+		let svgAsset = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"svg"
+		);
+		
+		svgAsset.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+		svgAsset.setAttribute("viewBox", "0 0 24 24");
+		svgAsset.setAttribute("preserveAspectRatio", "xMidYMid meet");
+		
+		let svgAssetShape = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"path"
+		);
+		
+		svgAssetShape.setAttribute("fill", cssColor);
+		svgAssetShape.setAttribute("d",
+			"M2 10Q2 6 6 5H18q4 1 4 5v4q0 4-4 5H6q-4-1-4-5V10H0v4q0 6 6 7H18q6-1 6-7V10q0-6-6-7H6Q0 4 0 10Z");
 		
 		svgAsset.appendChild(svgAssetShape);
 		
@@ -251,9 +278,9 @@ const ShortsRemover = (
 			
 			if (targetNode.querySelector("#bd323b9e-6a5f-47b2-a02c-864111679b2f") == null) {
 				
-				if (targetNode.querySelector("#app") != null) {
+				let yt_app = targetNode.querySelector("#app");
+				if (yt_app != null) {
 					
-					let yt_app = targetNode.querySelector("#app");
 					yt_app.style.backgroundColor = "black";
 					
 					let container = document.createElement("div");
@@ -284,9 +311,9 @@ const ShortsRemover = (
 			
 			if (targetNode.querySelector("#bd323b9e-6a5f-47b2-a02c-864111679b2f") == null) {
 				
-				if (targetNode.querySelector("ytd-shorts") != null) {
+				let yt_shorts = targetNode.querySelector("ytd-shorts");
+				if (yt_shorts != null) {
 					
-					let yt_shorts = targetNode.querySelector("ytd-shorts");
 					yt_shorts.setAttribute("id", "bd323b9e-6a5f-47b2-a02c-864111679b2f");
 					yt_shorts.innerHTML = "";
 					
@@ -345,12 +372,18 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
-				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
 				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
 					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
 						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
 				);
+				
+				let svgIco = CreateSvgAsset(SvgAssetId.Monitor, "currentcolor");
+				svgIco.style.height = "87%";
+				svgIco.style.marginRight = "10%";
+				
+				embedEndpoint.appendChild(svgIco);
+				embedEndpoint.appendChild(document.createTextNode("Embed"));
 				
 				x.appendChild(embedEndpoint);
 				container.appendChild(x);
@@ -380,12 +413,18 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
-				embedEndpoint.innerHTML = "<b>&#128437;</b>&ensp;Embed";
 				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
 					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
 						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
 				);
+				
+				let svgIco = CreateSvgAsset(SvgAssetId.Monitor, "currentcolor");
+				svgIco.style.height = "87%";
+				svgIco.style.marginRight = "10%";
+				
+				embedEndpoint.appendChild(svgIco);
+				embedEndpoint.appendChild(document.createTextNode("Embed"));
 				
 				container.appendChild(embedEndpoint);
 				

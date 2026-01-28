@@ -95,7 +95,7 @@ function ytFocusOptElement(
 	x.disabled = true;
 	
 	x.onclick = function(
-		/* [PointerEvent, KeyboardEvent] */ event
+		/* PointerEvent, KeyboardEvent */ event
 	) {
 		
 		let bFlag = true;
@@ -121,10 +121,10 @@ function ytFocusOptElement(
 				) => {
 					
 					if (x.style.backgroundColor == "green") {
-						x.firstChild.style.left = [ "calc(100% - 78%)" ]
+						x.firstChild.style.left = "calc(100% - 78%)";
 						x.style.backgroundColor = "darkred";
 					} else {
-						x.firstChild.style.left = [ "0%" ]
+						x.firstChild.style.left = "0%";
 						x.style.backgroundColor = "green";
 					}
 					
@@ -149,10 +149,10 @@ function ytFocusOptElement(
 				) => {
 					
 					if (x.style.backgroundColor == "green") {
-						x.firstChild.style.left = [ "calc(100% - 78%)" ]
+						x.firstChild.style.left = "calc(100% - 78%)";
 						x.style.backgroundColor = "darkred";
 					} else {
-						x.firstChild.style.left = [ "0%" ]
+						x.firstChild.style.left = "0%";
 						x.style.backgroundColor = "green";
 					}
 					
@@ -267,10 +267,10 @@ ytFocusOptElement.prototype.attributeChangedCallback = function(
 				container.appendChild(about);
 				
 				if (options.shortsRemover){
-					container.style.left = [ "0%" ]
+					container.style.left = "0%";
 					x.style.backgroundColor = "green";
 				} else {
-					container.style.left = [ "calc(100% - 78%)" ]
+					container.style.left = "calc(100% - 78%)";
 					x.style.backgroundColor = "darkred";
 				}
 				
@@ -308,10 +308,10 @@ ytFocusOptElement.prototype.attributeChangedCallback = function(
 				container.appendChild(about);
 				
 				if (options.embedEndpoint){
-					container.style.left = [ "0%" ]
+					container.style.left = "0%";
 					x.style.backgroundColor = "green";
 				} else {
-					container.style.left = [ "calc(100% - 78%)" ]
+					container.style.left = "calc(100% - 78%)";
 					x.style.backgroundColor = "darkred";
 				}
 				
