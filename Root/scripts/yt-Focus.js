@@ -384,10 +384,15 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
+				let rest = "";
+				if ( query.has("list") && query.get("list") != "WL" /* Watch Later */ && query.get("list") != "LL" /* Liked Videos */ ) {
+					rest += "listType=playlist&list=" + query.get("list");
+				}
+				
 				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
-					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
-						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
+					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?" + rest + "&rel=0" :
+						("https://www.youtube.com/embed/" + query.get("v") + "?" + rest + "&rel=0")
 				);
 				
 				let svgIco = CreateSvgAsset(SvgAssetId.Monitor, "currentcolor");
@@ -425,10 +430,15 @@ const InjectEmbedEndpoint = (
 					"yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m " +
 					"yt-spec-button-shape-next--icon-leading");
 				
+				let rest = "";
+				if ( query.has("list") && query.get("list") != "WL" /* Watch Later */ && query.get("list") != "LL" /* Liked Videos */ ) {
+					rest += "listType=playlist&list=" + query.get("list");
+				}
+				
 				embedEndpoint.setAttribute("target", "_self");
 				embedEndpoint.setAttribute("href",
-					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?rel=0" :
-						("https://www.youtube.com/embed/" + query.get("v") + "?rel=0")
+					(!query.has("v")) ? "https://www.youtube.com/embed/xxxxxxxxxxx?" + rest + "&rel=0" :
+						("https://www.youtube.com/embed/" + query.get("v") + "?" + rest + "&rel=0")
 				);
 				
 				let svgIco = CreateSvgAsset(SvgAssetId.Monitor, "currentcolor");
