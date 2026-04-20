@@ -373,16 +373,19 @@ const InjectEmbedEndpoint = (
 				let x = document.createElement("div")
 				x.setAttribute("id", "d1ed5d8a-10d9-49a7-a5de-2251c044ff2a");
 				x.setAttribute("class",
-					"yt-spec-button-view-model slim_video_action_bar_renderer_button");
+					"ytSpecButtonViewModelHost yt-spec-button-view-model " +
+					"slim_video_action_bar_renderer_button");
 				
 				let embedEndpoint = document.createElement("a");
 				embedEndpoint.style.textDecoration = "none";
 				embedEndpoint.setAttribute("button-renderer", "true");
 				embedEndpoint.setAttribute("class",
-					"yt-spec-button-shape-next " +
-					"yt-spec-button-shape-next--tonal yt-spec-button-shape-next--mono " +
-					"yt-spec-button-shape-next--size-m " +
-					"yt-spec-button-shape-next--icon-leading");
+					"yt-spec-button-shape-next ytSpecButtonShapeNext ytSpecButtonShapeNextHost " +
+					"yt-spec-button-shape-next--tonal ytSpecButtonShapeNextTonal " +
+					"yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m " +
+					"yt-spec-button-shape-next--icon-leading " +
+					"ytSpecButtonShapeNextMono ytSpecButtonShapeNextSizeM " +
+					"ytSpecButtonShapeNextIconLeading");
 				
 				let rest = "";
 				if ( query.has("list") && query.get("list") != "WL" /* Watch Later */ && query.get("list") != "LL" /* Liked Videos */ ) {
@@ -426,9 +429,9 @@ const InjectEmbedEndpoint = (
 				embedEndpoint.setAttribute("id", "d1ed5d8a-10d9-49a7-a5de-2251c044ff2a");
 				embedEndpoint.setAttribute("button-renderer", "true");
 				embedEndpoint.setAttribute("class",
-					"ytd-menu-renderer yt-spec-button-view-model yt-spec-button-shape-next yt-spec-button-shape-next--tonal " +
-					"yt-spec-button-shape-next--mono yt-spec-button-shape-next--size-m " +
-					"yt-spec-button-shape-next--icon-leading");
+					"ytd-menu-renderer ytSpecButtonShapeNextHost ytSpecButtonShapeNextTonal " +
+					"ytdMenuRenderer ytMenuRenderer ytSpecButtonShapeNextMono ytSpecButtonShapeNextSizeM " +
+					"ytSpecButtonShapeNextIconLeading");
 				
 				let rest = "";
 				if ( query.has("list") && query.get("list") != "WL" /* Watch Later */ && query.get("list") != "LL" /* Liked Videos */ ) {
